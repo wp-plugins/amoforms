@@ -1,0 +1,164 @@
+/* Main styles */
+.amoforms_settings_page {
+  width: 700px;
+}
+.amoforms_settings_page th {
+  text-align: left;
+  padding-right: 5px;
+}
+.amoforms_save_form_block {
+  margin-top: 15px;
+}
+.amoforms_field {
+  margin-bottom: 10px;
+}
+.amoforms_fields_form_not_saved .amoforms_field_delete_button,
+.amoforms_no_delete_fields .amoforms_field_delete_button
+{
+  display: none;
+}
+
+/* Form preview */
+.amoforms_form_preview_form_wrapper {
+  width: 680px;
+  border: 1px solid #ccc;
+  background-color: #fff;
+  padding: 15px;
+}
+.amoforms_form_preview_form_wrapper .amoforms_field_title {
+  box-sizing: border-box;
+  color: rgb(51, 51, 51);
+  display: inline;
+  /*font-family: 'Noto Serif', serif;*/
+  font-size: 19px;
+  font-style: normal;
+  font-weight: bold;
+  height: auto;
+  line-height: 35.5553321838379px;
+  width: auto;
+  word-wrap: break-word;
+}
+.amoforms_form_preview_form_wrapper .amoforms_field_input_wrapper {
+  border-image-outset: 0px;
+  border-image-repeat: stretch;
+  border-image-slice: 100%;
+  border-image-source: none;
+  border-image-width: 1;
+  border: 0px none rgb(51, 51, 51);
+  box-sizing: border-box;
+  color: rgb(51, 51, 51);
+  display: block;
+  /*font-family: 'Noto Serif', serif;*/
+  font-size: 19px;
+  font-style: normal;
+  font-weight: normal;
+  height: 47.7777786254883px;
+  line-height: 35.5553321838379px;
+  margin: 0px;
+  outline: rgb(51, 51, 51) none 0px;
+  padding: 0px;
+  vertical-align: baseline;
+  width: 660.260437011719px;
+  word-wrap: break-word;
+}
+.amoforms_form_preview_form_wrapper .amoforms_field_input_wrapper input {
+  -webkit-appearance: none;
+  -webkit-rtl-ordering: logical;
+  -webkit-user-select: text;
+  background: rgb(247, 247, 247) -webkit-linear-gradient(top, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0));
+  border-image-outset: 0px;
+  border-image-repeat: stretch;
+  border-image-slice: 100%;
+  border-image-source: none;
+  border-image-width: 1;
+  border-radius: 0px;
+  border: 1.11111116409302px solid rgba(51, 51, 51, 0.0980392);
+  box-sizing: border-box;
+  color: rgba(51, 51, 51, 0.701961);
+  cursor: auto;
+  display: inline-block;
+  font-family: 'Noto Serif', serif;
+  font-size: 19px;
+  font-stretch: normal;
+  font-style: normal;
+  font-variant: normal;
+  font-weight: normal;
+  height: 47.8125px;
+  letter-spacing: normal;
+  line-height: normal;
+  margin: 0px;
+  max-width: 100%;
+  padding: 10.0282001495361px;
+  text-align: start;
+  text-indent: 0px;
+  text-rendering: auto;
+  text-shadow: none;
+  text-transform: none;
+  vertical-align: baseline;
+  width: 660.260437011719px;
+  word-spacing: 0px;
+  word-wrap: break-word;
+  -webkit-writing-mode: horizontal-tb;
+}
+.amoforms_form_preview_form_wrapper .amoforms_field_description_wrapper {
+  border-image-outset: 0px;
+  border-image-repeat: stretch;
+  border-image-slice: 100%;
+  border-image-source: none;
+  border-image-width: 1;
+  border: 0px none rgb(51, 51, 51);
+  box-sizing: border-box;
+  color: rgb(51, 51, 51);
+  display: block;
+  font-family: 'Noto Serif', serif;
+  font-size: 19px;
+  font-style: normal;
+  font-weight: normal;
+  /*height: 31.1111125946045px;*/
+  line-height: 35.5553321838379px;
+  margin: 0px;
+  outline: rgb(51, 51, 51) none 0px;
+  padding: 0px;
+  vertical-align: baseline;
+  width: 660.260437011719px;
+  word-wrap: break-word;
+}
+.amoforms_form_preview_form_wrapper .amoforms_submit_button input[type=submit] {
+  -webkit-appearance: none;
+  -webkit-rtl-ordering: logical;
+  -webkit-user-select: none;
+  background: rgb(51, 51, 51) -webkit-linear-gradient(top, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0));
+  border-image-outset: 0px;
+  border-image-repeat: stretch;
+  border-image-slice: 100%;
+  border-image-source: none;
+  border-image-width: 1;
+  border-radius: 0px;
+  border: 0px none rgb(255, 255, 255);
+  box-sizing: border-box;
+  color: rgb(255, 255, 255);
+  cursor: pointer;
+  display: inline-block;
+  font-family: 'Noto Sans', sans-serif;
+  font-size: 16px;
+  font-stretch: normal;
+  font-style: normal;
+  font-variant: normal;
+  font-weight: bold;
+  height: 47.0833358764648px;
+  letter-spacing: normal;
+  line-height: normal;
+  margin: 0px;
+  max-width: 100%;
+  padding: 13px 26px;
+  text-align: center;
+  text-indent: 0px;
+  text-rendering: auto;
+  text-shadow: none;
+  text-transform: uppercase;
+  vertical-align: baseline;
+  width: 114.21875px;
+  word-spacing: 0px;
+  word-wrap: break-word;
+  -webkit-writing-mode: horizontal-tb;
+}
