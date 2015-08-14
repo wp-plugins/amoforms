@@ -3,6 +3,7 @@ namespace Amoforms\Models\Forms;
 
 use Amoforms\Exceptions\Argument;
 use Amoforms\Exceptions\Runtime;
+use Amoforms\Helpers;
 use Amoforms\Models\Fields;
 use Amoforms\Models\Fields\Types\Interfaces\Base_Field;
 
@@ -226,6 +227,23 @@ class Form implements Interfaces\Form
 	}
 
 	/**
+	 * Fill empty settings
+	 * @since 1.1.0
+	 */
+	protected function fill_settings()
+	{
+		/** @var \WP_User $user */
+		$user = wp_get_current_user();
+
+		if (empty($this->_settings['email']['name'])) {
+			$this->set_email(['name' => $user->display_name]);
+		}
+		if (empty($this->_settings['email']['to'])) {
+			$this->set_email(['to' => $user->user_email]);
+		}
+	}
+
+	/**
 	 * Save form to database
 	 * @since 1.0.0
 	 *
@@ -234,9 +252,10 @@ class Form implements Interfaces\Form
 	 */
 	public function save()
 	{
+		$this->fill_settings();
 		$data = [
-			'settings' => json_encode($this->get_settings(), JSON_UNESCAPED_UNICODE),
-			'fields'   => json_encode($this->get_fields(), JSON_UNESCAPED_UNICODE),
+			'settings' => json_encode(Helpers::strip_slashes($this->get_settings()), JSON_UNESCAPED_UNICODE),
+			'fields'   => json_encode(Helpers::strip_slashes($this->get_fields()), JSON_UNESCAPED_UNICODE),
 			'version'  => AMOFORMS_VERSION,
 		];
 		$format = ['%s', '%s', '%s'];
@@ -350,7 +369,7 @@ class Form implements Interfaces\Form
 	 * @return $this
 	 */
 	protected function set_name($name) {
-		$this->_settings['name'] = trim($name);
+		$this->_settings['name'] = Helpers::escape($name);
 		return $this;
 	}
 
@@ -363,7 +382,7 @@ class Form implements Interfaces\Form
 			$this->_settings['title']['type'] = $title['type'];
 		}
 		if (!empty($title['value'])) {
-			$this->_settings['title']['value'] = trim($title['value']);
+			$this->_settings['title']['value'] = Helpers::escape($title['value']);
 		}
 		return $this;
 	}
@@ -427,7 +446,7 @@ class Form implements Interfaces\Form
 	 * @return $this
 	 */
 	protected function set_font($font) {
-		$this->_settings['font'] = trim($font);
+		$this->_settings['font'] = Helpers::escape($font);
 		return $this;
 	}
 
@@ -440,7 +459,7 @@ class Form implements Interfaces\Form
 			$this->_settings['background']['type'] = $background['type'];
 		}
 		if (!empty($background['value'])) {
-			$this->_settings['background']['value'] = trim($background['value']);
+			$this->_settings['background']['value'] = Helpers::escape($background['value']);
 		}
 		return $this;
 	}
@@ -452,9 +471,12 @@ class Form implements Interfaces\Form
 	 * @return $this
 	 */
 	protected function set_email(array $email_settings) {
-		foreach (array_keys($this->_settings['email']) as $key) {
+		foreach ($this->_settings['email'] as $key => $old_value) {
 			if (!empty($email_settings[$key])) {
-				$this->_settings['email'][$key] = trim($email_settings[$key]);
+				if ($key === 'email' && !filter_var($email_settings[$key], FILTER_VALIDATE_EMAIL)) {
+					continue;
+				}
+				$this->_settings['email'][$key] = Helpers::escape($email_settings[$key]);
 			}
 		}
 		return $this;
@@ -484,7 +506,7 @@ class Form implements Interfaces\Form
 			$this->_settings['confirmation']['type'] = $confirmation['type'];
 		}
 		if (!empty($confirmation['value'])) {
-			$this->_settings['confirmation']['value'] = trim($confirmation['value']);
+			$this->_settings['confirmation']['value'] = Helpers::escape($confirmation['value']);
 		}
 		return $this;
 	}

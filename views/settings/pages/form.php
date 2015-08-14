@@ -22,7 +22,7 @@ $settings = $form->get_settings();
 				</td>
 			</tr>
 
-			<?php /* FIXME: temporary disabled
+			<?php /* FIXME: temporary disabled;
 			<tr>
 				<th><label>Form title</label></th>
 				<td>
@@ -59,6 +59,7 @@ $settings = $form->get_settings();
 			</tr>
  		*/
 			?>
+
 		</table>
 
 		<?php /* FIXME: temporary disabled
@@ -80,7 +81,7 @@ $settings = $form->get_settings();
 
 		<h2>Confirmation</h2>
 		<table>
-			<?php foreach ($form->get_confirmation_types() as $type) { ?>
+			<?php foreach($form->get_confirmation_types() as $type) { ?>
 				<tr>
 					<th><label><?= $type ?></label></th>
 					<td>
@@ -89,16 +90,42 @@ $settings = $form->get_settings();
 				</tr>
 			<?php } ?>
 			<tr>
-				<th><label>Value</label></th>
+				<th><label>Text</label></th>
 				<td>
-					<input type="text" name="form[settings][confirmation][value]" placeholder="Text for confirmation" value="<?= $settings['confirmation']['value'] ?>" title="text area">
+					<?php
+					$editor_settings = [
+						'wpautop'       => 1,
+						'textarea_name' => 'form[settings][confirmation][value]',
+						'dfw'           => TRUE,
+						'quicktags'     => FALSE,
+						'media_buttons' => FALSE,
+						'textarea_rows' => 10,
+					];
+					wp_editor($settings['confirmation']['value'],'truewpeditor',$editor_settings)  ?>
+
 				</td>
 			</tr>
+			<tr>
+				<td>
+					<select name="form[settings][confirmation][value]" title="Pages">
+						<?php
+						foreach (get_all_page_ids() as $page_id) {
+							echo '<option value="' . get_permalink($page_id) . '">' . get_the_title($page_id) . "</option>";
+						} ?>
+					</select>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<input type="text" name="form[settings][confirmation][value]" placeholder="http://" value="<?= $settings['confirmation']['value'] ?>" title="text area">
+				</td>
+			</tr>
+
 		</table>
- 		*/?>
+		*/?>
 
 		<div class="amoforms_save_form_block">
-			<input type="submit" value="Save Changes">
+			<input type="submit" value="Save">
 		</div>
 
 	</form>

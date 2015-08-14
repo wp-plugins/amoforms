@@ -57,7 +57,7 @@ class Settings extends Base
 			->set('statuses_types', $statuses_types)
 			->set('fields_types', $fields_types)
 			->set('path', "settings/pages/$page")
-			->render(!empty($_GET['view']) ? 'settings/' . $_GET['view'] : 'settings/layout');
+			->render(!empty($_GET['view']) ? 'settings/' . $_GET['view'] : 'settings/page');
 	}
 
 	/**
@@ -102,13 +102,16 @@ class Settings extends Base
 				'id',
 				'settings' => [
 					'name',
-					//'confirmation' => ['type'], //temporary disabled
+					/* temporary disabled
+					'confirmation' => ['type'],
+					*/
 				],
 			]]);
 			/* temporary disabled
 			if (!isset($_POST['form']['settings']['confirmation']['value'])) {
 				$_POST['form']['settings']['confirmation']['value'] = '';
-			}*/
+			}
+			*/
 			if (!$form = $this->get_form_by_request()) {
 				$form = new Form();
 			}
@@ -122,11 +125,12 @@ class Settings extends Base
 				'confirmation' => [
 					'type'  => trim($_POST['form']['settings']['confirmation']['type']),
 					'value' => Helpers::escape($_POST['form']['settings']['confirmation']['value']),
-				]*/
+				]
+				*/
 			])->save();
 
 		} catch (\Exception $e) {
-			var_dump($e->__toString());
+			Helpers::handle_exception($e);
 		}
 
 		$this->edit_form_action();
@@ -143,7 +147,7 @@ class Settings extends Base
 		$this->_view
 			->set('form', $form)
 			->set('path', 'settings/pages/email')
-			->render('settings/layout');
+			->render('settings/page');
 	}
 
 	/**
@@ -157,7 +161,7 @@ class Settings extends Base
 		Helpers::validate_for_empty($_POST, ['form' => [
 			'id',
 			'settings' => [
-				'email'        => ['name', 'subject', 'to'],
+				'email' => ['name', 'subject', 'to'],
 			],
 		]]);
 
@@ -170,9 +174,9 @@ class Settings extends Base
 		};
 
 		$form->set_settings([
-			'email'        => [
-				'name'    => Helpers::escape($_POST['form']['settings']['email']['name']),
-				'subject' => Helpers::escape($_POST['form']['settings']['email']['subject']),
+			'email' => [
+				'name'    => $_POST['form']['settings']['email']['name'],
+				'subject' => $_POST['form']['settings']['email']['subject'],
 				'to'      => $_POST['form']['settings']['email']['to'],
 			],
 		])->save();
@@ -249,7 +253,7 @@ class Settings extends Base
 		$this->_view
 			->set('form', $form)
 			->set('path', 'settings/pages/preview')
-			->render('settings/layout');
+			->render('settings/page');
 	}
 
 	/**

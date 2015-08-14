@@ -10,8 +10,8 @@ defined('AMOFORMS_BOOTSTRAP') or die('Direct access denied');
  */
 class Mail implements Interfaces\Mail
 {
-	/** @var string|null */
-	protected $_from = NULL;
+	/** @var string */
+	protected $_from = '';
 
 	/** @var bool */
 	protected $_is_html = FALSE;

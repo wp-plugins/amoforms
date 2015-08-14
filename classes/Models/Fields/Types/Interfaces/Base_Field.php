@@ -8,7 +8,7 @@ defined('AMOFORMS_BOOTSTRAP') or die('Direct access denied');
 /**
  * Interface Base_Field
  * @since   1.0.0
- * @package Amoforms\Models\Fields\Interfaces
+ * @package Amoforms\Models\Fields\Types\Interfaces
  */
 interface Base_Field extends Array_Converting
 {

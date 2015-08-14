@@ -11,7 +11,7 @@ defined('AMOFORMS_BOOTSTRAP') or die('Direct access denied');
  * Class Manager
  * @since 1.0.0
  * @method static Manager instance
- * @package Amoforms\Models\Fields
+ * @package Amoforms\Models\Fields\Types
  */
 class Manager implements Interfaces\Manager
 {

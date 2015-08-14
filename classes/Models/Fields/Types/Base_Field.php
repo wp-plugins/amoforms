@@ -1,12 +1,14 @@
 <?php
 namespace Amoforms\Models\Fields\Types;
 
+use Amoforms\Helpers;
+
 defined('AMOFORMS_BOOTSTRAP') or die('Direct access denied');
 
 /**
  * Class Base_Field
  * @since 1.0.0
- * @package Amoforms\Models\Fields
+ * @package Amoforms\Models\Fields\Types
  */
 abstract class Base_Field implements Interfaces\Base_Field
 {
@@ -18,8 +20,8 @@ abstract class Base_Field implements Interfaces\Base_Field
 	const TYPE_TEXTAREA = 'textarea';
 	const TYPE_TEXT = 'text';
 	const TYPE_NUMBER = 'number';
-	const TYPE_LIST = 'list'; //TODO: rename?
-	const TYPE_SELECT = 'select'; //TODO: rename?
+	const TYPE_LIST = 'list';
+	const TYPE_SELECT = 'select';
 	const TYPE_DATE = 'date';
 	const TYPE_URL = 'url';
 	const TYPE_ADDRESS = 'address';
@@ -27,7 +29,7 @@ abstract class Base_Field implements Interfaces\Base_Field
 	const TYPE_INSTRUCTIONS = 'instructions';
 	const TYPE_CAPTCHA = 'captcha';
 	const TYPE_LINE = 'line';
-	const TYPE_SUBMIT = 'submit'; //TODO: delete?
+	//const TYPE_SUBMIT = 'submit'; //TODO: delete
 
 	const DESCRIPTION_POS_BEFORE = 'before';
 	const DESCRIPTION_POS_AFTER = 'after';
@@ -91,7 +93,6 @@ abstract class Base_Field implements Interfaces\Base_Field
 	 */
 	public function to_array()
 	{
-		//TODO: check it
 		return $this->get_system_params() + $this->get_editable_params();
 	}
 
@@ -104,17 +105,17 @@ abstract class Base_Field implements Interfaces\Base_Field
 		return [
 			//self::TYPE_HEADING,
 			self::TYPE_NAME,
-			//self::TYPE_PHONE,
+			self::TYPE_PHONE,
 			self::TYPE_EMAIL,
-			//self::TYPE_COMPANY,
+			self::TYPE_COMPANY,
 			self::TYPE_TEXTAREA,
-			//self::TYPE_TEXT,
-			//self::TYPE_NUMBER,
+			self::TYPE_TEXT,
+			self::TYPE_NUMBER,
 			//self::TYPE_LIST,
 			//self::TYPE_SELECT,
-			//self::TYPE_DATE,
-			//self::TYPE_URL,
-			//self::TYPE_ADDRESS,
+			self::TYPE_DATE,
+			self::TYPE_URL,
+			self::TYPE_ADDRESS,
 			//self::TYPE_FILE,
 			//self::TYPE_INSTRUCTIONS,
 			//self::TYPE_CAPTCHA,
@@ -175,7 +176,7 @@ abstract class Base_Field implements Interfaces\Base_Field
 	 * @return $this
 	 */
 	protected function set_name($name) {
-		$this->_name = trim($name);
+		$this->_name = Helpers::escape($name);
 		return $this;
 	}
 
@@ -185,7 +186,7 @@ abstract class Base_Field implements Interfaces\Base_Field
 	 * @return $this
 	 */
 	protected function set_description($description) {
-		$this->_description = trim($description);
+		$this->_description = Helpers::escape($description);
 		return $this;
 	}
 
@@ -195,7 +196,7 @@ abstract class Base_Field implements Interfaces\Base_Field
 	 * @return $this
 	 */
 	protected function set_default_value($default_value) {
-		$this->_default_value = trim($default_value);
+		$this->_default_value = Helpers::escape($default_value);
 		return $this;
 	}
 
@@ -205,7 +206,7 @@ abstract class Base_Field implements Interfaces\Base_Field
 	 * @return $this
 	 */
 	protected function set_placeholder($placeholder) {
-		$this->_placeholder = trim($placeholder);
+		$this->_placeholder = Helpers::escape($placeholder);
 		return $this;
 	}
 

@@ -3,7 +3,7 @@ Contributors: amoCRM
 Tags: contact, contact button, contact form, contact form builder, contact form plugin, contact form to email, contact form with recaptcha, contact us, drag and drop contact form, file upload contact form, easy contact form, feedback, feedback form, form, form builder, form solution, forms, helpdesk, request form, responsive contact form
 Requires at least: 4.0
 Tested up to: 4.2.4
-Stable tag: 1.0.1
+Stable tag: 1.1.0
 License: GPLv2 or later
 
 Create forms and manage submissions easily with a simple interface. Contact forms, subscription forms, or any other form for WordPress.
@@ -43,10 +43,15 @@ PHP 5.4 and later
 
 == Changelog ==
 
-= 1.0.1 =
-*12th August, 2015*
+= 1.1.0 =
 
-* Readme update.
+* Added new field types: Phone, Company, Text, Number, Date, URL, Address.
+* Added new option for fields: Default value.
+* Email and name of current user will automatically used for Email Settings.
+
+= 1.0.1 =
+
+* Readme fix.
 
 = 1.0.0 =
 *Release Date - 12th August, 2015*

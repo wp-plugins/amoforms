@@ -7,7 +7,7 @@
 Plugin Name: amoForms
 Plugin URI:  http://www.amocrm.com
 Description: Create forms and manage submissions easily with a simple interface. Contact forms, subscription forms, or any other form for WordPress.
-Version:     1.0.1
+Version:     1.1.0
 Author:      amoCRM
 Author URI:  http://www.amocrm.com
 License:     GPLv2 or later

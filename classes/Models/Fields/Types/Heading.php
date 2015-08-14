@@ -8,7 +8,7 @@ defined('AMOFORMS_BOOTSTRAP') or die('Direct access denied');
 /**
  * Class Heading
  * @since 1.0.0
- * @package Amoforms\Models\Fields
+ * @package Amoforms\Models\Fields\Types
  */
 class Heading extends Base_Field
 {
@@ -16,7 +16,6 @@ class Heading extends Base_Field
 	{
 		$this->_type = self::TYPE_HEADING;
 		$this->_name = I18n::get('Heading');
-		$this->_description = I18n::get('Heading description');
 		$this->_default_value = I18n::get('Call Back Request');
 		$this->_placeholder = I18n::get('Call Back Request');
 		$this->_read_only = TRUE;

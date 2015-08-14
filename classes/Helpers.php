@@ -44,6 +44,36 @@ class Helpers
 		return htmlspecialchars(htmlspecialchars_decode(trim($text), ENT_QUOTES | ENT_HTML401), ENT_QUOTES | ENT_HTML401);
 	}
 
+
+	/**
+	 * Un-escape HTML-entities in string
+	 * @since 1.0.2
+	 * @param string $text
+	 * @return string
+	 */
+	public static function un_escape($text)
+	{
+		return trim(htmlspecialchars_decode($text, ENT_QUOTES | ENT_HTML401));
+	}
+
+	/**
+	 * Remove slashes before quotes in string or array.
+	 * For array this function walk over all string values.
+	 * @param string $string
+	 * @return string|array
+	 */
+	public static function strip_slashes($string)
+	{
+		if (is_array($string)) {
+			foreach ($string as $index => $str) {
+				$string[$index] = self::strip_slashes($str);
+			}
+		} elseif (is_string($string)) {
+			$string = stripslashes($string);
+		}
+		return $string;
+	}
+
 	/**
 	 * Array validator for empty values
 	 * @since 1.0.0

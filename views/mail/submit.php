@@ -1,20 +1,17 @@
 <?php
 /** @var Amoforms\Views\Interfaces\Base $this */
 defined('AMOFORMS_BOOTSTRAP') or die('Direct access denied');
-
-use Amoforms\Libs\Locale\I18n;
-
 $data = $this->get('data');
 ?>
 <!DOCTYPE html>
 <html>
 <head>
 	<meta charset="UTF-8">
-	<title><?= I18n::get('Form data') ?></title>
+	<title><?= $data['form']['name'] ?></title>
 </head>
 <body>
 <div class="email-body-wrapper">
-	<h1><?= I18n::get('Form data') ?></h1>
+	<h1><?= $data['form']['name'] ?></h1>
 	<div class="fields-container">
 		<?php
 		foreach ($data['fields'] as $field) { ?>

@@ -3,6 +3,7 @@
 defined('AMOFORMS_BOOTSTRAP') or die('Direct access denied');
 
 use Amoforms\Libs\Locale\I18n;
+use Amoforms\Models\Fields\Types\Base_Field;
 
 /** @var \Amoforms\Models\Forms\Form $form */
 $form = $this->get('form');
@@ -27,13 +28,25 @@ $result = $this->get('result');
 					<b class="amoforms_field_title"><?= $field['name'] ?></b>
 				</div>
 				<div class="amoforms_field_input_wrapper">
+					<?php
+					$type = 'text';
+					if ($field['type'] === Base_Field::TYPE_DATE) {
+						$type = 'date';
+					} elseif ($field['type'] === Base_Field::TYPE_EMAIL) {
+						$type = 'email';
+					} elseif ($field['type'] === Base_Field::TYPE_NUMBER) {
+						$type = 'number';
+					} elseif ($field['type'] === Base_Field::TYPE_URL) {
+						$type = 'url';
+					}
+					?>
 					<input
-						type="text" <?php //TODO: set type based on field type ?>
+						type="<?= $type ?>"
 						name="fields[<?= $id ?>]"
 						value="<?= $field['default_value'] ?>"
 						placeholder="<?= $field['placeholder'] ?>"
-						<?= $field['required'] ? 'required="required"' : '' ?>"
-						>
+						<?php if ($field['required']) echo 'required="required"' ?>
+						/>
 				</div>
 				<div class="amoforms_field_description_wrapper">
 					<?= $field['description'] ?>

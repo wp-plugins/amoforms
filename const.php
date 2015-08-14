@@ -1,7 +1,7 @@
 <?php
 defined('AMOFORMS_BOOTSTRAP') or die('Direct access denied');
 
-define('AMOFORMS_VERSION', '1.0.1');
+define('AMOFORMS_VERSION', '1.1.0');
 define('AMOFORMS_MINIMUM_WP_VERSION', '4.0'); //TODO: check it
 define('AMOFORMS_PLUGIN_URL', plugin_dir_url(__FILE__));
 define('AMOFORMS_PLUGIN_DIR', plugin_dir_path(__FILE__));

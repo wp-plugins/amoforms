@@ -1,5 +1,7 @@
 <?php
 /** @var Amoforms\Views\Interfaces\Base $this */
+use Amoforms\Models\Fields\Types\Base_Field;
+
 defined('AMOFORMS_BOOTSTRAP') or die('Direct access denied');
 
 /** @var \Amoforms\Models\Forms\Form $form */
@@ -21,6 +23,8 @@ $fields = $form->get_fields();
 
 		<?php foreach ($fields as $field_id => $field) { ?>
 
+		<div class="amoforms_field_wrapper">
+
 			<div class="amoforms_field">
 
 				<input type="hidden" name="form[fields][<?= $field_id ?>][type]" value="<?= $field['type'] ?>">
@@ -36,26 +40,6 @@ $fields = $form->get_fields();
 						>
 				</div>
 
-				<div>Description</div>
-				<div>
-					<input type="text"
-						   name="form[fields][<?= $field_id ?>][description]"
-						   title="Description"
-						   value="<?= $field['description'] ?>"
-						>
-				</div>
-
-				<?php /* FIXME: temporary disabled
-				<div>Default value</div>
-				<div>
-					<input type="text"
-						   name="form[fields][<?= $field_id ?>][default_value]"
-						   title="Default value"
-						   value="<?= $field['default_value'] ?>"
-						>
-				</div>
- 				*/ ?>
-
 				<div>Placeholder</div>
 				<div>
 					<input type="text"
@@ -65,7 +49,16 @@ $fields = $form->get_fields();
 						>
 				</div>
 
-				<?php /* FIXME: temporary disabled
+				<div>Description</div>
+				<div>
+					<input type="text"
+						   name="form[fields][<?= $field_id ?>][description]"
+						   title="Description"
+						   value="<?= $field['description'] ?>"
+						>
+				</div>
+
+				<?php /* temporary disabled
 				<div>Description position</div>
 				<div>
 					<label>
@@ -87,7 +80,16 @@ $fields = $form->get_fields();
 						Before
 					</label>
 				</div>
- 				*/ ?>
+				*/?>
+
+				<div>Default value</div>
+				<div>
+					<input type="text"
+						   name="form[fields][<?= $field_id ?>][default_value]"
+						   title="Default value"
+						   value="<?= $field['default_value'] ?>"
+						>
+				</div>
 
 				<div>Required</div>
 				<div>
@@ -112,15 +114,16 @@ $fields = $form->get_fields();
 				</div>
 
 				<div class="amoforms_field_delete_button <?= !$form->id() ? 'hidden' : '' ?>">
-					<a class="amoforms_field_delete_button_link" href="?page=amoforms&action=delete_field&form[id]=<?= $form->id() ?>&field[id]=<?= $field_id ?>">Delete</a>
+					<a class="amoforms_field_delete_button_link" href="?page=amoforms&action=delete_field&form[id]=<?= $form->id() ?>&field[id]=<?= $field_id ?>">Delete field</a>
 				</div>
 			</div>
-			<?php
+		</div>
+		<?php
 		}
 		?>
 
 		<div class="amoforms_save_form_block">
-			<input type="submit" value="Save Changes">
+			<input type="submit" value="Save">
 		</div>
 	</form>
 
@@ -151,7 +154,7 @@ $fields = $form->get_fields();
 	<?php if ($form->id()) { ?>
 		<div class="amoforms_shortcode_block">
 			<h2>Form shortcode</h2>
-			<b>[amoforms id=<?= $form->id() ?>]</b>
+			<b>[amoforms id="<?= $form->id() ?>"]</b>
 		</div>
 	<?php } ?>
 </div>

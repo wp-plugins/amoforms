@@ -94,7 +94,7 @@ class Form extends Base
 				if (isset($_REQUEST['fields'][$field_id]) && $_REQUEST['fields'][$field_id] !== '') {
 					$fields[$field_id] = [
 						'name'  => $field['name'],
-						'value' => trim($_REQUEST['fields'][$field_id]),
+						'value' => Helpers::escape($_REQUEST['fields'][$field_id]),
 					];
 				}
 			}
@@ -103,15 +103,18 @@ class Form extends Base
 				throw new Validate('Empty fields');
 			}
 
-			$email = $this->_view
-					->set('data', ['fields' => $fields])
-					->get_html('mail/submit');
+			$email = $this->_view->set('data', [
+				'fields' => $fields,
+				'form'   => [
+					'name' => $form->get('name'),
+				]
+			])->get_html('mail/submit');
 
 			$sender = new Sender\Mail();
 			$sender
 				->set_html(TRUE)
-				->set_from($settings['email']['name'])
-				->send($settings['email']['to'], $settings['email']['subject'], $email);
+				->set_from(Helpers::un_escape($settings['email']['name']))
+				->send($settings['email']['to'], Helpers::un_escape($settings['email']['subject']), $email);
 
 			$this->_view->render('pages/submit');
 

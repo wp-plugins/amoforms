@@ -12,6 +12,11 @@
 .amoforms_field {
   margin-bottom: 10px;
 }
+.amoforms_fields_settings .amoforms_field {
+  border: 1px solid #ccc;
+  padding: 5px;
+  display: inline-block;
+}
 .amoforms_fields_form_not_saved .amoforms_field_delete_button,
 .amoforms_no_delete_fields .amoforms_field_delete_button
 {

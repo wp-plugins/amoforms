@@ -8,7 +8,7 @@ defined('AMOFORMS_BOOTSTRAP') or die('Direct access denied');
 /**
  * Class Phone
  * @since 1.0.0
- * @package Amoforms\Models\Fields
+ * @package Amoforms\Models\Fields\Types
  */
 class Phone extends Base_Field
 {
@@ -16,7 +16,7 @@ class Phone extends Base_Field
 	{
 		$this->_type = self::TYPE_PHONE;
 		$this->_name = I18n::get('Phone');
-		$this->_description = I18n::get('Enter your phone number');
+		$this->_description = '';
 		$this->_default_value = '';
 		$this->_placeholder = '+1 123 456 78 90';
 		$this->_required = TRUE;
